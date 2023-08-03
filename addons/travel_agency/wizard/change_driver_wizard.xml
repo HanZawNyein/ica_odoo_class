@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="change_driver_view_form" model="ir.ui.view">
+        <field name="name">change_driver_view_form</field>
+        <field name="model">change.driver.wizard</field>
+        <field name="arch" type="xml">
+            <form string="change_driver_form">
+                <sheet>
+                    <group>
+                        <field name="driver_id"/>
+                        <field name="join_date"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_change_driver" type="object" string="Change Driver" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="change_driver_wizard_action" model="ir.actions.act_window">
+        <field name="name">Change Driver Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">change.driver.wizard</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

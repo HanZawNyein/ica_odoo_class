@@ -9,6 +9,9 @@
                 <field name="license_number"/>
                 <field name="driver_id"/>
                 <field name="join_date"/>
+                <field name="travel_agency_id"/>
+                <field name="state" decoration-success="state == 'running'" decoration-info="state == 'draft'"
+                       widget="badge"/>
             </tree>
         </field>
     </record>
@@ -18,10 +21,34 @@
         <field name="model">travel.car</field>
         <field name="arch" type="xml">
             <form string="travel_car_form">
+                <header>
+                    <button type="object" name="action_draft" string="Rest to Draft" states="running"/>
+                    <button type="object" name="action_running" string="Running" class="btn-primary" states="draft"
+                            confirm="Are you sure to Confirm ?"/>
+                    <button type="object" name="action_change_driver" string="Change Driver" class="btn-primary"
+                            states="running"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
                 <sheet>
+
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_show_driver_history"
+                                type="object" icon="fa-bars">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">
+                                    Driver History
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Draft" bg_color="bg-danger"
+                            attrs="{'invisible': [('state', '=', 'running')]}"/>
+                    <widget name="web_ribbon" title="Running" bg_color="bg-success"
+                            attrs="{'invisible': [('state', '=', 'draft')]}"/>
                     <group>
                         <group string="Car Information">
                             <field name="license_number"/>
+                            <field name="travel_agency_id"/>
                         </group>
                         <group string="Driver Information">
                             <field name="driver_id"/>

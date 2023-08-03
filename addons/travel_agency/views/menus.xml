@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="travel_agency_root" name="Travel Agency">
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="configuration_categ" name="Configration" sequence="5">
+            <menuitem id="travel_gate_categ" name="Gates" action="travel_grate_action" sequence="5"/>
+            <menuitem id="travel_township_categ" name="Township" action="travel_agency.travel_township_action"
+                      sequence="0"/>
+        </menuitem>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="travel_agency_categ" name="Agency" sequence="0">
+            <menuitem id="travel_car_categ" name="Cars" action="travel_car_action"/>
+            <menuitem id="travel_agency_model_categ" name="Agency" action="travel_agency_action"/>
+            <menuitem id="driver_history_categ" name="Driver History" action="driver_history_action"/>
+            <!--            <menuitem id="change_driver_wizard_categ" name="Change Driver" action="change_driver_wizard_action"/>-->
+
+        </menuitem>
+    </menuitem>
+</odoo>
